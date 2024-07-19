@@ -28,6 +28,7 @@ import { MoneyDonationComponent } from './Components/money-donation/money-donati
 import { InkindDonationComponent } from './Components/inkind-donation/inkind-donation/inkind-donation.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { ReportComponent } from './Components/report/report.component';
+import { UserCardComponent } from './Components/user-card/user-card.component';
 
 
 export const routes: Routes = [
@@ -52,6 +53,8 @@ export const routes: Routes = [
       {path:'inkindDonation',component:InkindDonationComponent},
       {path:"donorprofile/:id",component:ProfileComponent},
       {path:'report/:id',component:ReportComponent}
+      ,
+      {path:'userCard',component:UserCardComponent}
     ]
   },
   {
