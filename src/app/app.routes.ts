@@ -9,7 +9,6 @@ import { AuthLayoutComponent } from './Components/auth-layout/auth-layout.compon
 import { UserAccountTypeComponent } from './Components/user-account-type/user-account-type.component';
 import { UserAccountTypeLayoutComponent } from './Components/user-account-type-layout/user-account-type-layout.component';
 import { CharityRegisterComponent } from './Components/charity-register/charity-register.component';
-import { CorporateRegisterComponent } from './Components/corporate-register/corporate-register.component';
 import { DonorComponent } from './Components/donor/donor.component';
 import { CharityComponent } from './Components/charity/charity.component';
 import { ProjectComponent } from './Components/project/project.component';
@@ -29,6 +28,7 @@ import { InkindDonationComponent } from './Components/inkind-donation/inkind-don
 import { ProfileComponent } from './Components/profile/profile.component';
 import { ReportComponent } from './Components/report/report.component';
 import { UserCardComponent } from './Components/user-card/user-card.component';
+import { AlldonorsComponent } from './Components/alldonors/alldonors.component';
 
 
 export const routes: Routes = [
@@ -41,7 +41,7 @@ export const routes: Routes = [
       { path: 'register', component: UserAccountTypeComponent },
       { path: 'donnerregister', component: RegisterComponent },
       { path: 'charityregister', component: CharityRegisterComponent },
-      { path: 'corporateregister', component: CorporateRegisterComponent },
+
       { path: 'donor', component: DonorComponent, canActivate: [authGuard] },
       { path: 'charity/:id', component: CharityComponent, canActivate: [authGuard] },
       { path: 'project', component: ProjectComponent, canActivate: [authGuard] },
@@ -54,7 +54,7 @@ export const routes: Routes = [
       {path:"donorprofile/:id",component:ProfileComponent},
       {path:'report/:id',component:ReportComponent}
       ,
-      {path:'userCard',component:UserCardComponent}
+      {path:'allDonors',component:AlldonorsComponent}
     ]
   },
   {
