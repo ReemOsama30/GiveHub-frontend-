@@ -1,0 +1,34 @@
+<app-blank-navbar class="m-5"></app-blank-navbar>
+<br><br><br><br><br><br>
+<div class="container">
+  <div class="text-center mb-3">
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-8">
+        <h1 class="display-4 font-weight-bold">Charities</h1>
+        <p>Our customizable donation pages and peer-to-peer fundraising campaigns are the perfect tools to add to your
+          online fundraising arsenal.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Add a class to apply the top margin to the container -->
+  <div class="content-container container align-items-center justify-content-center mt-4"
+    style="height: 100vh; background-color: #eeeeee; border-radius: 20px;">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 overflow-auto" style="max-height: 100vh; width: 100%;">
+
+      <div class="col" *ngFor="let charity of charities">
+
+        <div class="card h-100">
+          <a [routerLink]="'/charity-details/' + charity.id" routerLinkActive="active">
+            <img *ngIf="charity.profileImg" class="card-img-top" [src]="getFullImageUrl(charity.profileImg )"
+              [alt]="charity.name">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">{{ charity.name }}</h5>
+            <p class="card-text">{{ charity.description }}</p>
+            <a [href]="charity.websiteUrl" class="btn btn-primary" target="_blank">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,53 @@
+<app-blank-navbar></app-blank-navbar>
+<br>
+<br>
+
+
+<div class="container">
+    <div class="content">
+        <div class="form-section">
+            <h2>Every Gift, Big or Small, Makes a Difference for All</h2>
+            <div class="donor-info">
+                <div class="donor-details">
+                    <p><strong>Donor Name:</strong> {{ donorName }}</p>
+                    <p><strong>Donor Email:</strong> {{ donorEmail }}</p>
+                </div>
+                <p><strong>Project Name:</strong> {{ projectName }}</p>
+            </div>
+            
+          
+            
+            <form [formGroup]="donationForm" (ngSubmit)="onSubmit()" class="donation-form">
+                <div class="form-group">
+                    <label for="donationDate">Donation Date</label>
+                    <input type="date" id="donationDate" formControlName="donationDate" class="form-control">
+                    <div *ngIf="donationForm.get('donationDate')?.invalid && donationForm.get('donationDate')?.touched" class="text-danger">
+                        Donation Date is required.
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="form-group half-width">
+                        <label for="itemDescription">Item Description</label>
+                        <input type="text" id="itemDescription" formControlName="itemDescription" class="form-control">
+                        <div *ngIf="donationForm.get('itemDescription')?.invalid && donationForm.get('itemDescription')?.touched" class="text-danger">
+                            Item Description is required.
+                        </div>
+                    </div>
+                    <div class="form-group half-width">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" id="quantity" formControlName="quantity" class="form-control">
+                        <div *ngIf="donationForm.get('quantity')?.invalid && donationForm.get('quantity')?.touched" class="text-danger">
+                            Quantity is required and must be greater than 0.
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="donationForm.invalid">Donate</button>
+            </form>
+        </div>
+        <div class="image-section">
+            <img src="assets/Images/nkind donation.jpg" alt="Donation Banner" class="banner">
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

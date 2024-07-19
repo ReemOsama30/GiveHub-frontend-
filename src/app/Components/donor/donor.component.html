@@ -1,0 +1,110 @@
+<app-blank-navbar class="m-5"></app-blank-navbar>
+<br>
+<br>
+<br>
+<div class="container my-5">
+  <div class="text-center mb-3">
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-8">
+        <h1 class="display-4 font-weight-bold">Projects Page</h1>
+        <p>Our customizable donation pages and peer-to-peer fundraising campaigns are the perfect tools to add to your online fundraising arsenal.</p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-8">
+        <div class="search-form">
+          <form>
+            <div class="inner-form row justify-content-center">
+              <div class="input-field col-md-9">
+                <input id="search" type="text" [(ngModel)]="searchTerm" name="searchTerm" placeholder="Search by location..." (ngModelChange)="onSearchTermChange()" class="form-control">
+                <button class="btn-search" type="button">
+                  <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-10">
+        <div class="filter-options d-flex justify-content-center align-items-center p-3">
+          <div class="filters d-flex">
+            <select id="categoryId" class="filter-select with-arrow mr-5" (change)="onFiltersChange()" [(ngModel)]="selectedCategoryName">
+              <option value="">Categories</option>
+              <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+            </select>
+            <select id="fundingGoal" class="filter-select with-arrow" (change)="onFiltersChange()" [(ngModel)]="selectedBudget">
+              <option value="">Budget Range</option>
+              <option value="min">Less than 1000</option>
+              <option value="range">1000 to 5000</option>
+              <option value="max">More than 5000</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="project-list row">
+          <div class="project-card col-md-4 mb-4" *ngFor="let project of filteredProjects">
+            <div class="card">
+              <img class="card-img-top" [src]="getFullImageUrl(project.imgUrl)" alt="Project Image">
+              <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+
+                <!-- Labels Above the Progress Bar -->
+                <div class="progress-labels-above d-flex justify-content-between mb-1">
+                  <span>Amount Raised</span>
+                  <span> Goal</span>
+                </div>
+
+                <!-- Progress Bar with Values Inside -->
+                <div class="progress my-2 position-relative">
+                  <span class="progress-value-left "  [style.width.%]="getProgressPercentage(project.amountRaised, project.fundingGoal)"
+                  [attr.aria-valuenow]="project.amountRaised" aria-valuemin="0"
+                  [attr.aria-valuemax]="project.fundingGoal">{{ project.amountRaised }}</span>
+                  <div class="progress-bar custom-progress-bar" [style.width.%]="getProgressPercentage(project.amountRaised, project.fundingGoal)">
+                  </div>
+                  <span class="progress-value-right">{{ project.fundingGoal }}</span>
+                </div>
+                
+                
+
+                <p class="card-text"><strong>Charity Name:</strong> {{ project.charityName }}</p>
+                <p class="card-text"><strong>State:</strong> {{ getStateString(project.state) }}</p>
+                <p class="card-text"><strong>Category:</strong> {{ project.categoryName }}</p>
+                <p class="card-text"><strong>Location:</strong> {{ project.location }}</p>
+                <div *ngIf="project.state !== 1" class="d-flex justify-content-between mt-3">
+                  <button class="btn btn-primary flex-grow-1 mr-2" (click)="onMoneyDonate(project.id, project.title, project.charityId)">
+                    Money Donation
+                  </button>
+                  <button class="btn btn-secondary flex-grow-1 ml-2" (click)="onInKindDonate(project.id, project.charityId, project.title)">
+                    In-Kind Donation
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pagination-container mt-5 mb-5">
+  <nav aria-label="Project pagination">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" href="javascript:void(0);" (click)="onPageChange(currentPage - 1)" tabindex="-1" aria-disabled="true">Previous</a>
+      </li>
+      <li class="page-item" [class.disabled]="!PagesAvailable">
+        <a class="page-link" href="javascript:void(0);" (click)="onPageChange(currentPage + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>

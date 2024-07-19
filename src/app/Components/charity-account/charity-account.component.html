@@ -1,0 +1,51 @@
+<div class="flex min-h-screen signup">
+  <div class="row h-100">
+  <div class="flex-1 items-center text-grey-darkest min-h-screen h-full p-6 sm:p-12 md:p-12 lg:p-20 flex">
+    <div class="w-full md:w-4/5 mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Form Section -->
+      <div>
+        <h1 class="mb-4 custom-title dntly_header ">Make Charity Profile</h1>
+        <form [formGroup]="charityForm" (ngSubmit)="onSubmit()" class="custom-form">
+          <div class="form-floating mb-2 mt-2">
+            <input type="text" formControlName="name" readonly id="name" class="form-control styled-input" placeholder=" " [(ngModel)]="charityData.name">
+            <label for="name">Charity Name</label>
+            <div class="text-danger" *ngIf="charityForm.get('name')?.errors && (charityForm.get('name')?.touched || charityForm.get('name')?.dirty)">
+              <p *ngIf="charityForm.get('name')?.getError('required')">Name is required</p>
+            </div>
+          </div>
+          <div class="form-floating mb-2 mt-2">
+            <textarea formControlName="description" id="description" class="form-control styled-input" placeholder=" " [(ngModel)]="charityData.description"></textarea>
+            <label for="description">Description</label>
+            <div class="text-danger" *ngIf="charityForm.get('description')?.errors && (charityForm.get('description')?.touched || charityForm.get('description')?.dirty)">
+              <p *ngIf="charityForm.get('description')?.getError('required')">Description is required</p>
+            </div>
+          </div>
+          <div class="form-floating mb-2 mt-2">
+            <input type="text" formControlName="websiteUrl" id="websiteUrl" class="form-control styled-input" placeholder=" " [(ngModel)]="charityData.websiteUrl">
+            <label for="websiteUrl">Website Url</label>
+            <div class="text-danger" *ngIf="charityForm.get('websiteUrl')?.errors && (charityForm.get('websiteUrl')?.touched || charityForm.get('websiteUrl')?.dirty)">
+              <p *ngIf="charityForm.get('websiteUrl')?.getError('required')">Website Url is required</p>
+            </div>
+          </div>
+          <div class="form-floating mb-2 mt-2">
+            <input type="file" formControlName="imgUrl" id="imgUrl" class="form-control styled-input" (change)="onFileChange($event)">
+            <label for="imgUrl">Image Path</label>
+            <div class="text-danger" *ngIf="charityForm.get('imgUrl')?.errors && (charityForm.get('imgUrl')?.touched || charityForm.get('imgUrl')?.dirty)">
+              <p *ngIf="charityForm.get('imgUrl')?.getError('required')">Image Path is required</p>
+            </div>
+          </div>
+          <button class=" btn btn-primary  mt-5 mb-5">
+            <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+            Create Profile
+        </button>
+          <p class="text-danger" *ngIf="msgError">{{msgError}}</p>
+        </form>
+      </div>
+      <!-- Image Section -->
+      <div class="image-container">
+        <img src="./assets/Images/charityAccount.png" alt="Charity Image" class="img-fluid w-100 mb-5 ms-5 rounded shadow-lg">
+      </div>
+    </div>
+  </div>
+</div>
+</div>

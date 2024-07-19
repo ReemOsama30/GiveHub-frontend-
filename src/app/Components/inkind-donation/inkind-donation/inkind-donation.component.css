@@ -1,0 +1,152 @@
+
+/* Additional styles for your existing content */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 80px); /* Full height minus some padding */
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+
+.form-section {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.banner {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.donor-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 1em;
+    text-align: left;
+    margin-bottom: 20px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.donor-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Align items with space between them */
+}
+
+.donor-details p {
+    margin: 10px 0;
+}
+
+.donor-info p {
+    margin: 10px 0;
+}
+
+
+.donor-details {
+    flex: 1; /* Allows this div to take up remaining space */
+}
+
+.donor-info p {
+    margin: 10px 0;
+}
+
+form.donation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.half-width {
+    width: calc(50% - 10px);
+}
+
+.input-group {
+    display: flex;
+    gap: 20px;
+}
+
+.input-group .form-group {
+    flex: 1;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+    border-color: hsla(134, 50%, 50%, 0.856);
+    box-shadow: 0 0 8px  hsla(134, 50%, 50%, 0.856);
+    outline: none;
+}
+
+.btn {
+    background-color: hsla(134, 50%, 50%, 0.856);
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.btn:hover {
+    background-color: #1e7e34;
+}
+
+.text-danger {
+    color: #ff4d4d;
+    font-size: 0.9em;
+    margin-top: 5px;
+}

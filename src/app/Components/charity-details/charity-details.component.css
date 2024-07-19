@@ -1,0 +1,122 @@
+.body, .html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+.charity-details-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.hero-section {
+  width: 100%;
+  height: 50vh; /* Adjust the height as needed */
+  background-size: contain; /* Adjusted to 'contain' */
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.charity-title {
+  font-size: 3rem;
+  margin: 0 0 10px;
+}
+
+.visit-website-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.visit-website-button:hover {
+  background-color: #218838;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.charity-description, .donate-section {
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.charity-description h2, .donate-section h2 {
+  margin-top: 0;
+}
+
+
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 40vh;
+  }
+
+  .charity-title {
+    font-size: 2.5rem;
+  }
+
+  .visit-website-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .content-section {
+    padding: 10px;
+  }
+
+  .donate-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    height: 30vh;
+  }
+
+  .charity-title {
+    font-size: 2rem;
+  }
+
+  .visit-website-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .content-section {
+    padding: 5px;
+  }
+
+  .donate-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}

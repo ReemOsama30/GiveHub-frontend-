@@ -1,0 +1,21 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import url('https://fonts.google.com/share?selection.family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900');
+@import url('https://fonts.google.com/share?selection.family=Righteous');
+
+// Customize Bootstrap variables here
+$primary: #77d986; 
+$secondary: #2980f2; 
+$accent:#f2e085;
+$success: #4caf50; // Example: change success color
+$info: #00bcd4; // Example: change info color
+$warning: #ffeb3b; // Example: change warning color
+$danger: #f44336; // Example: change danger color
+$light: #eeeeee; // Example: change light color
+$dark: #1c1c1c; // Example: change dark color
+
+$font-family-base: 'Poppins', sans-serif; // Custom base font
+$headings-font-family: 'Righteous', serif; // Custom headings font
+
+// Import Bootstrap to apply the customizations
+@import "~bootstrap/scss/bootstrap";

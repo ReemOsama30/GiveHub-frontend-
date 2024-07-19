@@ -1,0 +1,78 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+.spacer {
+    height: 40px; 
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+    position: relative; 
+}
+
+.charity-details {
+    text-align: left; 
+    margin-bottom: 30px;
+}
+
+.description {
+ 
+    margin-bottom: 10px;
+}
+
+.chart-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff; 
+}
+
+.chart-container h3 {
+    margin-top: 0;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    font-size: 0.8rem; 
+}
+
+.print-button {
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+}
+
+
+@media print {
+    body {
+        background-color: #fff;
+    }
+
+    .spacer, .footer, .charity-details, .print-button {
+        display: none; 
+    }
+
+    .container {
+        box-shadow: none;
+        border: none;
+    }
+
+    .chart-container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 0;
+    }
+}

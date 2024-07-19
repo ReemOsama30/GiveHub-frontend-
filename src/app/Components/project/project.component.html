@@ -1,0 +1,78 @@
+<app-blank-navbar></app-blank-navbar>
+<br />
+<div class="flex min-h-screen signup">
+  <div class="row h-100">
+    <div class="flex-1 items-center text-grey-darkest min-h-screen h-full p-6 sm:p-12 md:p-12 lg:p-20 flex">
+      <div class="w-full md:w-4/5 mx-auto">
+        <h1 class="mb-4 custom-title dntly_header">Add project</h1>
+        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+          <div class="form-floating mb-2 mt-2">
+            <input type="text" id="title" placeholder=" " class="form-control styled-input" formControlName="title" />
+            <label for="title">Title</label>
+            <div *ngIf="projectForm.get('title')?.invalid && projectForm.get('title')?.touched" class="text-danger">
+              Title is required.
+            </div>
+          </div>
+
+          <div class="form-floating mb-2 mt-2">
+            <textarea id="description" placeholder=" " class="form-control styled-input" formControlName="description"></textarea>
+            <label for="description">Description</label>
+            <div *ngIf="projectForm.get('description')?.invalid && projectForm.get('description')?.touched" class="text-danger">
+              Description is required.
+            </div>
+          </div>
+
+          <div class="form-floating mb-2 mt-2">
+            <input type="number" id="fundingGoal" placeholder=" " class="form-control styled-input" formControlName="fundingGoal" />
+            <label for="fundingGoal">Funding Goal</label>
+            <div *ngIf="projectForm.get('fundingGoal')?.invalid && projectForm.get('fundingGoal')?.touched" class="text-danger">
+              Funding Goal is required.
+            </div>
+          </div>
+
+          <div class="form-floating mb-2 mt-2">
+            <input type="text" id="location" placeholder=" " class="form-control styled-input" formControlName="location" />
+            <label for="location">Location</label>
+            <div *ngIf="projectForm.get('location')?.invalid && projectForm.get('location')?.touched" class="text-danger">
+              Location is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="categoryId">Category</label>
+            <select id="categoryId" class="form-control" formControlName="categoryId" required>
+              <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+            </select>
+            <div *ngIf="projectForm.get('categoryId')?.invalid && projectForm.get('categoryId')?.touched" class="text-danger">
+              Category is required.
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="imgPath">Image Path</label>
+            <input type="file" id="imgPath" placeholder=" " class="form-control styled-input" (change)="onFileSelected($event)" />
+            <span *ngIf="projectForm.get('imgPath')?.value">{{ projectForm.get("imgPath")?.value }}</span>
+          </div>
+
+          <div class="form-floating mb-2 mt-2">
+            <input id="state" type="hidden" class="form-control styled-input" formControlName="state" />
+          </div>
+
+          <div class="form-floating mb-2 mt-2">
+            <input type="hidden" id="charityId" class="form-control styled-input" formControlName="charityId" [value]="nweProj.charityId" />
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="projectForm.invalid">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Right Side -->
+    <div class="col-lg-6 col-md-12 d-lg-flex flex-column align-items-center justify-content-center md:flex min-h-full p-6 sm:p-12 md:p-12 lg:p-16">
+      <div class="flex-initial flex-col w-full lg:w-4/5">
+        <img src="./assets/Images/pexels-cottonbro-6591166.jpg" class="img-fluid rounded shadow-lg" />
+      </div>
+    </div>
+  </div>
+</div>

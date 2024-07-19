@@ -1,0 +1,85 @@
+.navbar{
+    background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+a.nav-link
+{
+    padding: 10px;
+}
+
+.dropdown-menu-custom {
+    width: 800px; /* Adjust as needed */
+    padding: 1rem;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    border: none; /* Remove border */
+}
+
+.dropdown-item-custom {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.dropdown-item-custom:hover {
+    background-color: transparent; /* No background color change */
+}
+.dropdown:hover .dropdown-menu-custom {
+    display: block;
+}
+
+
+.dropdown-item-custom:hover::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: green;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+}
+.dropdown-toggle::after {
+    content: ''; /* Font Awesome down caret icon  \f077*/
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 500;
+    margin-left: 0.5rem;
+    transition: transform 0.3s;
+}
+
+.dropdown-toggle:hover::after {
+    transform: rotate(180deg); /* Rotate the caret icon */
+}
+
+.dropdown-column {
+    min-width: 200px;
+    margin: 0.5rem 0;
+}
+
+@media (max-width: 576px) {
+    .dropdown-menu-custom {
+        width: 100%; /* Adjust width for smaller screens */
+        padding: 1rem 0.5rem;
+    }
+
+    .dropdown-column {
+        min-width: 100%;
+        margin: 0.25rem 0;
+    }
+}
+
+.dropdown-header-custom {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+}

@@ -1,0 +1,250 @@
+.display-4 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.text-center p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.inner-form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.input-field input {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.btn-search {
+  border: none;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.btn-search svg {
+  width: 20px;
+  height: 20px;
+}
+
+.filter-select {
+  border: 1px solid #77d986;
+  border-radius: 8px;
+  padding: 8px 30px 8px 10px;
+  font-size: 1rem;
+  color: #333;
+  margin-right: 10px;
+  flex: 1;
+  appearance: none;
+  background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 9l8 8 8-8"/></svg>') no-repeat right 10px center;
+  background-size: 12px 12px;
+}
+
+.filter-select:focus {
+  background-color: white;
+  outline: none;
+  border-color: #77d986;
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.project-card {
+  flex: 1 1 calc(33.333% - 20px);
+  animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: linear-gradient(145deg, #f3f3f3, #e2e2e2);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 20px;
+  background: white;
+  border-radius: 0 0 10px 10px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  border: none;
+  color: white;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #66c776;
+  box-shadow: 0 4px 8px rgba(102, 199, 118, 0.5);
+}
+
+.btn-secondary {
+  border: none;
+  color: white;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-secondary:hover {
+  color: white;
+  box-shadow: 0 4px 8px rgba(85, 85, 85, 0.5);
+}
+
+/* Additional Styles for Special Design */
+.card-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-body p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.project-card .btn {
+  margin-top: 10px;
+}
+
+.custom-progress-bar {
+  background: linear-gradient(90deg, rgba(119, 217, 134, 1) 0%, rgba(67, 160, 71, 1) 100%);
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 20px;
+  display: flex;
+  justify-content: flex-end; /* Adjusted to align the progress from right to left */
+  color: black;
+  font-weight: bold;
+}
+
+.progress {
+  border-radius: 20px;
+  background-color: #e9ecef;
+  overflow: hidden;
+  height: 20px;
+  position: relative;
+  padding-left: 0; /* Ensure no padding inside the progress bar */
+  margin-left: 0; /* Ensure no margin inside the progress bar */
+}
+
+
+.progress-labels-above {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Style for fixed values on the progress bar */
+.progress-value-left {
+  position: absolute;
+  left: 0;
+  color: black;
+  font-weight: bold;
+  margin-left: 0; /* Ensure no margin is pushing it inward */
+  padding-left: 5px; /* Add a little padding to prevent text from touching the edge */
+}
+
+
+
+.progress-value-right {
+  position: absolute;
+  right: 0;
+  color: black;
+  font-weight: bold;
+  padding-right: 10px; /* Adjust padding as needed */
+}
+
+
+/* Pagination Styles */
+.pagination-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #ddd;
+}
+
+.pagination .page-item .page-link {
+  color: #77d986;
+  border-radius: 50%;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: #77d986;
+  color: white;
+}

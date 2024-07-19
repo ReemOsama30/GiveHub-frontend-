@@ -1,0 +1,151 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Container */
+.container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/* Card Styles */
+.card {
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  background-color: #77d986;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 200px; 
+}
+
+.card-text {
+  margin-bottom: 10px;
+}
+
+.donate-button {
+  background-color: hsla(134, 50%, 50%, 0.856);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.donate-button:hover {
+  background-color: hsla(134, 50%, 40%, 0.856);
+}
+
+/* Search Form Styles */
+.s003 {
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.inner-form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.input-select {
+  width: 30%;
+}
+
+.input-select select {
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  border-radius: 8px 0 0 8px; /* Rounded corners on the left */
+}
+
+.input-select select:focus {
+  border-color: #77d986;
+}
+
+#search {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  background-color: #fff;
+  border-radius: 0; /* No rounded corners */
+}
+
+#search:focus {
+  outline: none;
+}
+
+.btn-search {
+  background-color: #77d986;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 0 8px 8px 0; /* Rounded corners on the right */
+  cursor: pointer;
+  margin-left: auto; /* Pushes the button to the far right */
+}
+
+.btn-search:hover {
+  background-color: #66c77b;
+}
+
+.btn-search svg {
+  height: 20px;
+  width: 20px;
+}
+
+/* Pagination Styles */
+.pagination-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #ddd;
+}
+
+.pagination .page-item .page-link {
+  color: #77d986;
+  border-radius: 50%;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: #77d986;
+  color: white;
+}

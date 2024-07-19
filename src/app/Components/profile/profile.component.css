@@ -1,0 +1,308 @@
+ /* body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #1c1c1c;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background: #eeeeee;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-picture img {
+  border-radius: 50%;
+  width: 150px;
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+  flex-grow: 1;
+  padding-left: 20px;
+}
+
+.profile-info h2 {
+  margin: 0;
+  color: #2980f2;
+  font-size: 2em;
+  text-transform: uppercase;
+}
+
+.profile-info p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.social-icons i {
+  font-size: 24px;
+  color: #2980f2;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.social-icons i:hover {
+  color: #0056b3;
+}
+
+main {
+  margin-top: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-color: #77d986;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  margin-bottom: 20px;
+  color: #1c1c1c;
+  text-align: center;
+}
+
+.card h3 {
+  color: #1c1c1c;
+}
+
+.card p {
+  color: #555;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.donation-history {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.donation-history .card {
+  flex: 0 0 48%;
+  max-width: 48%; 
+}
+
+.badges {
+  text-align: center;
+}
+
+.badges .badge {
+  display: inline-block;
+  text-align: center;
+  margin: 20px;
+}
+
+.badges .badge img {
+  width: 100px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.badges .badge:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.badges .badge p {
+  margin-top: 10px;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.card-title {
+  background-color: #77d986;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.donation-history h3 {
+  width: 100%;
+  text-align: center;
+} 
+ */
+
+
+ body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #1c1c1c;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #f2f2f2, #e6e6e6);
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-picture img {
+  border-radius: 50%;
+  width: 150px;
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+  flex-grow: 1;
+  padding-left: 30px;
+}
+
+.profile-info h2 {
+  margin: 0;
+  color: #2980f2;
+  font-size: 2.5em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.profile-info p {
+  margin: 10px 0;
+  color: #555;
+  font-weight: 500;
+}
+
+.social-icons i {
+  font-size: 28px;
+  color: #2980f2;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.social-icons i:hover {
+  color: #0056b3;
+}
+
+main {
+  margin-top: 30px;
+}
+
+.donation-history {
+  margin-top: 30px;
+}
+
+.donation-history h3{
+  text-align: center;
+  color: #f2e085;
+  margin-bottom: 30px;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+h2{
+  margin-bottom: 30px;
+  font-size: 1.8em;
+  font-weight: 800;
+}
+
+.donation-history table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.donation-history th, .donation-history td {
+  padding: 10px; /* Reduced padding */
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.donation-history th {
+  background: #77d986;
+  color: #fff;
+  font-size: 1.1em; /* Slightly reduced font size */
+  font-weight: 700;
+}
+
+.donation-history tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.donation-history tr:hover {
+  background: #f1f1f1;
+}
+
+.donation-history td img {
+  width: 70px; /* Reduced image size */
+  border-radius: 8px;
+}
+
+.badges {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.badges .badge {
+  display: inline-block;
+  text-align: center;
+  margin: 30px;
+}
+
+.badges .badge img {
+  width: 120px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.badges .badge:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.badges .badge p {
+  margin-top: 15px;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 1.1em;
+}

@@ -1,0 +1,58 @@
+<app-blank-navbar></app-blank-navbar>
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+  <h1>It's Giving Season!</h1>
+  <h2>Just a dollar could save a soul</h2>
+  <img
+    src="assets/Images/moneyDonation.jpg"
+    alt="Donation Banner"
+    class="banner"
+  />
+  <form [formGroup]="donationForm" (ngSubmit)="onSubmit()">
+    <div class="donor-info my-3">
+        <div class="donor-details">
+            <p><strong>Donor Name:</strong> {{ donorName }}</p>
+            <p><strong>Donor Email:</strong> {{ donorEmail }}</p>
+        </div>
+        <p><strong>Project Name:</strong> {{ projectName }}</p>
+    </div>
+    <div class="section">
+      <label for="amount">Donate</label>
+      <input
+        type="number"
+        min="0"
+        id="amount"
+        class="text input-amount form-control"
+        name="amount"
+        placeholder="USD"
+        formControlName="amount"
+        (change)="onAmountChange($event)"
+      />
+    </div>
+    <div class="section">
+      <label for="payment-method">Payment Method</label>
+      <div class="row payment-method">
+       <!-- <app-paypal-button [amount]="donationForm.controls['Amount'].value"></app-paypal-button> -->
+       <app-paypal-button></app-paypal-button> 
+      </div>
+      <div
+        *ngIf="
+          donationForm.get('paymentMethod')?.invalid &&
+          donationForm.get('paymentMethod')?.touched
+        "
+      >
+        Payment method is required
+      </div>
+    </div>
+    <button type="submit" [disabled]="donationForm.invalid" class="btn tn-primary">
+      Donate
+    </button>
+  </form>
+</div>
+<br>
+<br>
+<br>
+<app-footer></app-footer>

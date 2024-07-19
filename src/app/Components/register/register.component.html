@@ -1,0 +1,133 @@
+<div class="flex min-h-screen signup">
+
+    <!-- <div class="row h-100"> -->
+        <div class="flex-1 items-center text-grey-darkest min-h-screen h-full p-6 sm:p-12 md:p-12 lg:p-20 flex">
+            <div class="w-full md:w-4/5 mx-auto">
+                <h1 class="mb-4 custom-title dntly_header">Get Started</h1>
+
+                <form [formGroup]="registerForm" (ngSubmit)="handleForm()" class="custom-form">
+                    <div class="form-floating mb-2 mt-2 ">
+                        <input type="text" formControlName="userName" id="userName" class="form-control styled-input"
+                            placeholder=" " [(ngModel)]="userData.userName" #InputName>
+                        <label for="userName">User Name</label>
+                        <div class="text-danger "
+                            *ngIf="registerForm.get('userName')?.errors && (registerForm.get('userName')?.touched || InputName.value.length > 0)"[attr.dir]="isArabic ? 'rtl' : 'ltr'">
+                            <p *ngIf="registerForm.get('userName')?.getError('required')">Name is required</p>
+                            <p *ngIf="registerForm.get('userName')?.getError('minlength')">Name Min length is 3</p>
+                            <p *ngIf="registerForm.get('userName')?.getError('maxlength')">Name Max length is 20</p>
+                        </div>
+                    </div>
+                    <div class="form-floating  mb-2 mt-2">
+                        <input type="email" formControlName="email" id="email" class="form-control styled-input"
+                            placeholder=" " [(ngModel)]="userData.email" #InputEmail>
+                        <label for="email">Email</label>
+                        <div class="text-danger "
+                            *ngIf="registerForm.get('email')?.errors && (registerForm.get('email')?.touched || InputEmail.value.length > 0)">
+                            <p *ngIf="registerForm.get('email')?.getError('required')">Email is required</p>
+                            <p *ngIf="registerForm.get('email')?.getError('email')">Email is invalid</p>
+                        </div>
+                    </div>
+                    <div class="form-floating  mb-2 mt-2">
+                        <input type="password" formControlName="password" id="password"
+                            class="form-control styled-input" placeholder=" " [(ngModel)]="userData.password"
+                            #InputPass>
+                        <label for="password">Password</label>
+                        <div class="text-danger "
+                            *ngIf="registerForm.get('password')?.errors && (registerForm.get('password')?.touched || InputPass.value.length > 0)">
+                            <p *ngIf="registerForm.get('password')?.getError('required')">Password is required</p>
+                            <p *ngIf="registerForm.get('password')?.getError('pattern')">Password is invalid</p>
+                        </div>
+                    </div>
+
+                    <div class="form-floating  mb-2 mt-2">
+                        
+                        <input formControlName="rePassword" type="password"  class="form-control styled-input" placeholder=" " id="rePassword">
+                        <label for="rePassword">Confirm Password</label>
+                        <div class="text-danger styled-input" *ngIf="registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched">
+                            <p *ngIf="registerForm.get('rePassword')?.getError('required')">Confirm Password is required</p>
+                            <p *ngIf="registerForm.get('rePassword')?.getError('mismatch')">Confirm rePassword must match the Password</p>
+                        </div>
+                    </div>
+
+                    <div class="form-floating  mb-2">
+                        <input type="hidden" formControlName="accountType" id="accountType" class="form-control"
+                            [(ngModel)]="userData.accountType">
+                    </div>
+                    <p class="text-danger" *ngIf="msgError">{{msgError}}</p>
+                    <button class="active-link btn btn-primary w-100 text-light mt-5 mb-5">
+                        <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+                        Register
+                    </button>
+                </form>
+
+                <div class="mt-3">
+                    <h6> Already have a GiveHub account? <a routerLink="/login">Log in instead</a>
+                    </h6>
+                </div>
+                <div class="mt-3">
+                    <h6><a href="#" class="mt-5">Go Back</a></h6>
+                </div>
+            </div>
+        </div>
+        <!-- Right Side -->
+        <div class="col-lg-6 col-md-12 d-lg-flex flex-column align-items-center justify-content-center bg-primary 
+        md:flex min-h-full p-6 sm:p-12 md:p-12 lg:p-16">
+            <div class="flex-initial flex-col w-full lg:w-4/5">
+                <img src="./assets/Images/GiveHub_largAllWhite.png" height="55" class="mt-2">
+                <h1 class="mb-4 text-5xl  my-6">Small team? Limited Resources? We can help!</h1>
+                <p class="sm:mt-2 md:mt-4 lg:mt-6 sm:mb-2 md:mb-6 lg:mb-10" style="line-height: 1.4em">
+                    At GiveHub, we're more than just a software provider -
+                    we're your trusted partner in fundraising success.
+                    Our team is here to support you every step of the way,
+                    with expert guidance, training, and resources
+                    ensuring you hit the ground running and achieve your goals in record time. </p>
+                <ul class="p-0">
+                    <li class="flex items-center mb-2">
+                        <svg class="mr-2" width="14" height="11" viewBox="0 0 14 11" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.051 0.995055L4.59004 8.45605L1.86663 5.70427C1.72479 5.5908 1.49784 5.5908 1.38436 5.70427L0.561669 6.52697C0.448194 6.64045 0.448194 6.8674 0.561669 7.00924L4.36309 10.7823C4.50493 10.9241 4.70351 10.9241 4.84536 10.7823L13.356 2.27165C13.4695 2.15818 13.4695 1.93123 13.356 1.78938L12.5333 0.995055C12.4198 0.853211 12.1929 0.853211 12.051 0.995055Z"
+                                fill="white"></path>
+                        </svg>
+                        <p class="font-bold">Expert guidance through personalized 1:1 onboarding</p>
+                    </li>
+                    <li class="flex items-center mb-2"> <svg class="mr-2" width="14" height="11" viewBox="0 0 14 11"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.051 0.995055L4.59004 8.45605L1.86663 5.70427C1.72479 5.5908 1.49784 5.5908 1.38436 5.70427L0.561669 6.52697C0.448194 6.64045 0.448194 6.8674 0.561669 7.00924L4.36309 10.7823C4.50493 10.9241 4.70351 10.9241 4.84536 10.7823L13.356 2.27165C13.4695 2.15818 13.4695 1.93123 13.356 1.78938L12.5333 0.995055C12.4198 0.853211 12.1929 0.853211 12.051 0.995055Z"
+                                fill="white"></path>
+                        </svg>
+                        <p class="font-bold">Seamless testing and launch of embedded forms and widgets</p>
+                    </li>
+                    <li class="flex items-center mb-2"> <svg class="mr-2" width="14" height="11" viewBox="0 0 14 11"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.051 0.995055L4.59004 8.45605L1.86663 5.70427C1.72479 5.5908 1.49784 5.5908 1.38436 5.70427L0.561669 6.52697C0.448194 6.64045 0.448194 6.8674 0.561669 7.00924L4.36309 10.7823C4.50493 10.9241 4.70351 10.9241 4.84536 10.7823L13.356 2.27165C13.4695 2.15818 13.4695 1.93123 13.356 1.78938L12.5333 0.995055C12.4198 0.853211 12.1929 0.853211 12.051 0.995055Z"
+                                fill="white"></path>
+                        </svg>
+                        <p class="font-bold">Tailored integration and analytics setup</p>
+                    </li>
+                    <li class="flex items-center mb-2"> <svg class="mr-2" width="14" height="11" viewBox="0 0 14 11"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.051 0.995055L4.59004 8.45605L1.86663 5.70427C1.72479 5.5908 1.49784 5.5908 1.38436 5.70427L0.561669 6.52697C0.448194 6.64045 0.448194 6.8674 0.561669 7.00924L4.36309 10.7823C4.50493 10.9241 4.70351 10.9241 4.84536 10.7823L13.356 2.27165C13.4695 2.15818 13.4695 1.93123 13.356 1.78938L12.5333 0.995055C12.4198 0.853211 12.1929 0.853211 12.051 0.995055Z"
+                                fill="white"></path>
+                        </svg>
+                        <p class="font-bold">Dedicated support for importing data from any platform</p>
+                    </li>
+                </ul>
+               
+               
+                <a href="#"
+                 target="_blank" 
+                 class="cursor-pointer rounded-full bg-white text-dark p-2 inline-flex items-center mt-4 
+                 hover:text-green-darker hover:bg-white"> 
+                 <span class="mx-4 font-bold">Talk to Our Support Team</span> </a>
+            </div>
+        </div>
+    <!-- </div> -->
+
+
+</div>
+
+

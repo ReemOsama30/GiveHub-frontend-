@@ -1,0 +1,341 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  
+  .container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #333;
+  }
+  
+  .navbar-brand {
+    color: #77d986 !important;
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #77d986 !important;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #fff;
+  }
+  
+  /* Carousel */
+  .carousel-inner.hero {
+    height: 100vh;
+  }
+  
+  .carousel-item img {
+    object-fit: cover;
+    height: 100vh;
+  }
+  
+  .carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+    bottom: 5%;
+  }
+  
+  .carousel-caption h5 {
+    font-size: 1.8rem;
+    color: #77d986;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .carousel-caption p {
+    font-size: 1rem;
+    color: #fff;
+  }
+  
+  /* About Section */
+  .about-section {
+    padding: 30px 0;
+    background-color: #fff;
+  }
+  
+  .about-section img {
+    border-radius: 10px;
+  }
+  
+  .about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+    background-color: #77d986;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+  
+  .about-section p.lead {
+    font-size: 1.1rem;
+    color: #77d986;
+  }
+  
+  .about-section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 0;
+  }
+  
+  /* Services Section */
+  .services-section {
+    padding: 30px 0;
+    background-color: #f8f9fa;
+  }
+  
+  .section-title h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 0 0 10px;
+    color: #333;
+    background-color: #77d986;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+  
+  .section-title p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0;
+  }
+  
+  .feature-box-1 {
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(31, 45, 61, 0.1);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: ease all 0.35s;
+    background-color: #fff;
+  }
+  
+  .feature-box-1:hover {
+    transform: translateY(-10px);
+    background-color: #77d986;
+    color: white;
+  }
+  
+  .feature-box-1 .icon {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    background-color: #77d986;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 50%;
+    margin-bottom: 22px;
+    font-size: 27px;
+    transition: background-color 0.35s;
+  }
+  
+  .feature-box-1:hover .icon {
+    background-color: white;
+    color: #77d986;
+  }
+  
+  
+  
+  .feature-box-1 h5 {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .feature-box-1 p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  /* Team Section */
+  #team {
+    padding: 50px 0;
+    background-color: #fff;
+  }
+  
+  #team .section-title h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    background-color: #77d986;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  
+  #team .section-title p {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  #team .member {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  #team .member img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+  }
+  
+  #team .member-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  #team .member-info-content h4 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+  
+  #team .member-info-content span {
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  #team .member:hover {
+    transform: scale(1.05);
+  }
+  
+  #team .member:hover img {
+    transform: scale(1.1);
+  }
+  
+  #team .member:hover .member-info {
+    opacity: 1;
+  }
+  
+  /* Additional Styling */
+  .hero {
+    height: 100vh;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .about-section h2 {
+      font-size: 1.8rem;
+    }
+  
+    .services-section .feature-box-1 {
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+  
+    #team {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  
+    #team .member-info {
+      padding: 10px;
+    }
+  }
+  
+  
+  
+  /* Promo Section */
+  .promo-section {
+    padding: 50px 0;
+    background-color: #f4f4f9;
+    text-align: center;
+  }
+  
+  .promo-section h2 {
+    font-size: 2.0rem;
+    margin-bottom: 20px;
+    color: #fff;
+    background-color: #77d986;
+    padding: 15px 25px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .promo-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 30px auto;
+    text-align: left;
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .promo-section ul li {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 35px;
+    line-height: 1.5;
+  }
+  
+  .promo-section ul li::before {
+    content: "✔";
+    color: #77d986;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+  
+  .promo-section .btn-signup {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #77d986;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .promo-section .btn-signup:hover {
+    background-color: #66c774;
+    transform: translateY(-3px);
+  }
+  
