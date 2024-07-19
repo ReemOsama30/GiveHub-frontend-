@@ -48,6 +48,13 @@
                     id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Your profile
                 </a>
+
+
+                <a class="nav-link " *ngIf="accountType === 'donor'" [routerLink]="['/allDonors']"
+                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Donors Profile
+            </a>
+    
         
                 <a class="nav-link " *ngIf="accountType === 'charityOrganization'" [routerLink]="['/report', accountId]"
                 id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

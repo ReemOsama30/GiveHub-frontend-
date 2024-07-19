@@ -3,11 +3,12 @@ import { UserCardComponent } from "../user-card/user-card.component";
 import { DonorService } from '../../Services/donorService/donor.service';
 import { CommonModule } from '@angular/common';
 import { NavWithSearchComponent } from "../nav-with-search/nav-with-search.component";
+import { BlankNavbarComponent } from "../blank-navbar/blank-navbar.component";
 
 @Component({
   selector: 'app-alldonors',
   standalone: true,
-  imports: [UserCardComponent, CommonModule, NavWithSearchComponent],
+  imports: [UserCardComponent, CommonModule, NavWithSearchComponent, BlankNavbarComponent],
   templateUrl: './alldonors.component.html',
   styleUrl: './alldonors.component.css'
 })
