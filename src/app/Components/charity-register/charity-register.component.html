@@ -43,9 +43,32 @@
                         <p *ngIf="registerForm.get('rePassword')?.getError('mismatch')">Confirm rePassword must match the Password</p>
                     </div>
                 </div>
-                <div class="mb-2">
-                    <input type="hidden" formControlName="accountType" id="accountType" class="form-control" [(ngModel)]="userData.accountType">
-                </div>
+                <div class="form-floating mb-2 mt-2">
+                    <input formControlName="name" id="name" class="form-control styled-input" placeholder=" " [(ngModel)]="userData.name">
+                    <label for="name">Charity Name</label>
+                    <div class="text-danger" *ngIf="registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)">
+                      <p *ngIf="registerForm.get('name')?.getError('required')">Name is required</p>
+                    </div>
+                  </div>
+                  <div class="form-floating mb-2 mt-2">
+                    <textarea formControlName="description" id="description" class="form-control styled-input" placeholder=" " [(ngModel)]="userData.description"></textarea>
+                    <label for="description">Description</label>
+                    <div class="text-danger" *ngIf="registerForm.get('description')?.errors && (registerForm.get('description')?.touched || registerForm.get('description')?.dirty)">
+                      <p *ngIf="registerForm.get('description')?.getError('required')">Description is required</p>
+                    </div>
+                  </div>
+                  <div class="form-floating mb-2 mt-2">
+                    <input type="text" formControlName="websiteUrl" id="websiteUrl" class="form-control styled-input" placeholder=" " [(ngModel)]="userData.websiteUrl">
+                    <label for="websiteUrl">Website Url</label>
+                    <div class="text-danger" *ngIf="registerForm.get('websiteUrl')?.errors && (registerForm.get('websiteUrl')?.touched || registerForm.get('websiteUrl')?.dirty)">
+                      <p *ngIf="registerForm.get('websiteUrl')?.getError('required')">Website Url is required</p>
+                    </div>
+                  </div>
+                  <div class="form-floating mb-2 mt-2">
+                    <input type="file" formControlName="imgUrl" id="imgUrl" class="form-control styled-input" (change)="onFileChange($event)">
+                    <label for="imgUrl">Image Path</label>
+                   
+                  </div>
                 <button class="active-link btn btn-primary w-100 text-light mt-5 mb-5">
                     <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
                     Register

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
   private projectId: number | null = null;
-  private charityId: number | null = null;
+  private charityId: string | null = null;
   private projectName :string ='';
   constructor() {}
 
@@ -23,11 +23,11 @@ export class SharedService {
     return this.projectId;
   }
 
-  setCharityId(id: number): void {
+  setCharityId(id: string): void {
     this.charityId = id;
   }
 
-  getCharityId(): number | null {
+  getCharityId(): string | null {
     return this.charityId;
   }
 }

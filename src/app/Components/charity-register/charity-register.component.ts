@@ -20,19 +20,30 @@ export class CharityRegisterComponent {
     userName: '',
     password: '',
     email: '',
-    accountType: 'charityOrganization'
+    name:'',
+    description: '',
+    websiteUrl: '',
+    imgUrl: '',
+    
   };
+  
+  selectedFile: File | null = null;  
   msgError: string = '';
   isLoading: boolean = false;
   constructor(private _AuthService: AuthService, private _Router: Router, 
     private _ngZone: NgZone, private charityServics: CharityService,public dialog: MatDialog) { }
-  registerForm: FormGroup = new FormGroup({
-    userName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    // confirmEmail: new FormControl('', [Validators.required, Validators.email]),
+ 
+    registerForm: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    websiteUrl: new FormControl('', [Validators.required]),
+    imgUrl: new FormControl(''),
     password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[\d])(?=.*[!@#$%^&*()_+\-=\[\]{}|;':"\\,.<>\/?]).{6,20}$/)]),
     rePassword: new FormControl(''),
-    accountType: new FormControl('')
+    userName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+  
+  
   }, { validators: [this.confirmPassword, this.confirmEmail] } as FormControlOptions);
 
 
@@ -63,10 +74,18 @@ export class CharityRegisterComponent {
   handleForm(): void {
     if (this.registerForm.valid) {
       this.isLoading = true;
-      localStorage.setItem('charityName', this.registerForm.get('userName')?.value);
-      console.log(localStorage.getItem('charityName'));
-      console.log(this.registerForm.value);
-      this._AuthService.setRegister(this.userData).subscribe({
+      const formData = new FormData();
+      formData.append('userName', this.userData.userName);
+      formData.append('password', this.userData.password);
+      formData.append('email', this.userData.email);
+      formData.append('name', this.userData.name);
+      formData.append('description', this.userData.description);
+      formData.append('websiteUrl', this.userData.websiteUrl);
+      if (this.selectedFile) {
+      formData.append('imgUrl', this.selectedFile); 
+      }
+      console.log(formData)
+      this._AuthService.setCharityRegister(formData).subscribe({
         next: (response) => {
           console.log(response)
           this.isLoading = false;
@@ -75,7 +94,7 @@ export class CharityRegisterComponent {
             console.log(this.charityServics.getAccountID(response.message.userName));
             this.charityServics.getAccountID(response.message.userName);
             this.openSuccessDialog();
-            this._Router.navigate(['/charityAccount']);
+            this._Router.navigate(['/login']);
           }
 
         },
@@ -104,7 +123,15 @@ export class CharityRegisterComponent {
       height: '260px'
     });
   }
-
+  onFileChange(event: any): void {
+    if (event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0];
+      // Check if selectedFile is not null before accessing its name property
+      if (this.selectedFile) {
+        this.userData.imgUrl = this.selectedFile.name;
+      }
+    }
+  }
 
 
 

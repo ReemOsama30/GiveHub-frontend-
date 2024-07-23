@@ -26,13 +26,13 @@
                                 <div class="col-md dropdown-column">
                                     <h6 class="dropdown-header-custom">Overview</h6>
                                     <!-- <a  class="dropdown-item dropdown-item-custom" *ngIf="accountType === 'charityOrganization' " [routerLink]="['/project']">Add New Project</a> -->
-                                    <a [routerLink]="['/project']" *ngIf="accountType=='charityOrganization'"
+                                    <a [routerLink]="['/project']" *ngIf="accountType==2"
                                         class="dropdown-item dropdown-item-custom">Add New Project</a>
 
                                     <a class="dropdown-item dropdown-item-custom" href="#">Custom Donation Forms</a>
-                                    <a class="dropdown-item dropdown-item-custom" *ngIf="accountType === 'donor'"
+                                    <a class="dropdown-item dropdown-item-custom" *ngIf="accountType === 1"
                                         [routerLink]="['/donor']">Donation Pages</a>
-                                    <a class="dropdown-item dropdown-item-custom" *ngIf="accountType === 'donor' "
+                                    <a class="dropdown-item dropdown-item-custom" *ngIf="accountType === 1 "
                                         [routerLink]="['/charities']">Charities</a>
                                   
                                 </div>
@@ -44,19 +44,19 @@
                 </li>
 
 
-                <a class="nav-link " *ngIf="accountType === 'donor'" [routerLink]="['/donorprofile', accountId]"
+                <a class="nav-link " *ngIf="accountType === 1" [routerLink]="['/donorprofile', accountId]"
                     id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Your profile
                 </a>
 
 
-                <a class="nav-link " *ngIf="accountType === 'donor'" [routerLink]="['/allDonors']"
+                <a class="nav-link " *ngIf="accountType === 1" [routerLink]="['/allDonors']"
                 id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Donors Profile
             </a>
     
         
-                <a class="nav-link " *ngIf="accountType === 'charityOrganization'" [routerLink]="['/report', accountId]"
+                <a class="nav-link " *ngIf="accountType === 2" [routerLink]="['/report', accountId]"
                 id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 View Your Report
             </a>

@@ -17,11 +17,8 @@ import { CharitiesComponent } from './Components/charities/charities.component';
 import { HomeAuthComponent } from './Components/home-auth/home-auth.component';
 import { HomecharityComponent } from './Components/homecharity/homecharity.component';
 import { LogincharityComponent } from './Components/logincharity/logincharity.component';
-
 import { CharityDetailsComponent } from './Components/charity-details/charity-details.component';
-import { CharityAccountComponent } from './Components/charity-account/charity-account.component';
 import { authGuard } from './Guards/auth.guard';
-
 import { DonorAccountComponent } from './donor-account/donor-account.component';
 import { MoneyDonationComponent } from './Components/money-donation/money-donation.component';
 import { InkindDonationComponent } from './Components/inkind-donation/inkind-donation/inkind-donation.component';
@@ -46,7 +43,6 @@ export const routes: Routes = [
       { path: 'charity/:id', component: CharityComponent, canActivate: [authGuard] },
       { path: 'project', component: ProjectComponent, canActivate: [authGuard] },
       { path: 'charities', component: CharitiesComponent, canActivate: [authGuard] },
-      { path: 'charityAccount', component: CharityAccountComponent },
       { path: 'charity-details/:id', component: CharityDetailsComponent },
       {path:'donoraccount',component:DonorAccountComponent},
       {path :'moneyDonation',component:MoneyDonationComponent},

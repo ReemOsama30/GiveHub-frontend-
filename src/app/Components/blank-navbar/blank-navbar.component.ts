@@ -14,7 +14,7 @@ import { CharityService } from '../../Services/charityService/charity.service';
   imports: [RouterLinkActive, RouterModule, CommonModule, RouterLink, HomeComponent]
 })
 export class BlankNavbarComponent implements OnInit {
-  accountType: string | null = null;
+  accountType: number | null = null;
   accountId: number | null = null;
 
 
@@ -32,7 +32,7 @@ export class BlankNavbarComponent implements OnInit {
     const userId = this._AuthService.getUserId();
     console.log("user id in string is => ", userId);
 
-    if (this.accountType == 'donor') {
+    if (this.accountType == 1) {
       if (userId) {
         this.donorService.getDonorID(userId).subscribe({
           next: (response) => {

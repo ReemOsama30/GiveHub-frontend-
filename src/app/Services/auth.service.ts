@@ -21,6 +21,11 @@ export class AuthService {
 
   }
 
+  setCharityRegister(userData: any): Observable<any> {
+    return this._HttpClient.post(`https://localhost:44377/api/Account/Charity-register`, userData);
+
+  }
+
   setLogIn(userData: any): Observable<any> {
     return this._HttpClient.post(`https://localhost:44377/api/Account/log-in`, userData)
   }
@@ -56,15 +61,16 @@ export class AuthService {
     return null;
   }
 
-  getUserAccountType(): string | null {
+  getUserAccountType(): number | null {
     const token = localStorage.getItem('eToken');
     if (token) {
 
      // const decodedToken: JwtPayload & { [key: string]: any } = jwtDecode(token);
-      
       const decodedToken: any = jwtDecode(token);
+      console.log(decodedToken["AccountType"]);
+      
       return decodedToken["AccountType"] || null;
-console.log(token);
+
     }
     return null;
   }

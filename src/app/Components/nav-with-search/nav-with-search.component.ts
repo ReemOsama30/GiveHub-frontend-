@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './nav-with-search.component.css'
 })
 export class NavWithSearchComponent {
-  accountType: string | null = null;
+  accountType: number | null =null;
 
   constructor(private _AuthService:AuthService){}
 
