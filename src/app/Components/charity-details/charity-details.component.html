@@ -14,12 +14,13 @@
    
   </div>
   <div class="charity-details-container">
-    <div class="hero-section" [style.backgroundImage]="'url(' + getFullImageUrl(charityData_DB.profileImg) + ')'">
+    <div *ngIf="charityData_DB" class="hero-section" [ngStyle]="{'background-image': 'url(' + getFullImageUrl(charityData_DB.profileImg) + ')'}">
       <div class="hero-content">
         <h1 class="charity-title">{{ charityData_DB.name }}</h1>
         <a [href]="'http://' + charityData_DB.websiteUrl" target="_blank" class="visit-website-button">Visit Website</a>
       </div>
     </div>
+
     
     <div class="content-section">
       <div class="charity-description">

@@ -19,20 +19,18 @@ enum ProjectState {
 })
 export class CharityComponent {
   projects: any[] = [];
-  charityId: number | null = null;
+  charityId: string  = "";
   currentPage: number = 1;
   PagesAvailable: boolean = true;
   constructor(private _projectService:ProjectService, private _route:ActivatedRoute){}
 
   ngOnInit(): void {
     this._route.paramMap.subscribe(params => {
-      this.charityId = Number(params.get('id'));
-      console.log('charity id ==> ',this.charityId) 
-     
+      const id = params.get('id');
+      this.charityId = id ? id : ''; 
         
        this._projectService.getAllprojectForCharityId(this.charityId).subscribe({
         next:(res)=>{
-          console.log('respossss =>',res);
           this.projects = res.message
         },
         error:(err) => {

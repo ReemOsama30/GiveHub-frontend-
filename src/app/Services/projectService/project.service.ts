@@ -18,7 +18,7 @@ export class ProjectService {
     
     return this._httpClient.post(`https://localhost:44377/api/project`,projecData)
   }
-  getAllprojectForCharityId(id:number):Observable<any>
+  getAllprojectForCharityId(id:string):Observable<any>
   {
     return this._httpClient.get(`https://localhost:44377/api/project/charity/${id}`)
   }

@@ -26,7 +26,7 @@ enum ProjectState {
 })
 
 export class ReportComponent {
-  charityId: number | null = null;
+  charityId: string  = '';
   charity: any = null;
   charityName: string = "";
   charityDescription: string = "";
@@ -163,7 +163,8 @@ export class ReportComponent {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
-      this.charityId = Number(params.get('id'));
+      const id = params.get('id');
+      this.charityId = id ? id : ''; // Ensure charityId is a string
       console.log('charity id is ==>', this.charityId);
 
       this.charityService.getcharityById(this.charityId).subscribe({
