@@ -25,6 +25,11 @@ export class AuthService {
     return this._HttpClient.post(`https://localhost:44377/api/Account/Charity-register`, userData);
 
   }
+  setDonorRegister(userData: any): Observable<any> {
+    return this._HttpClient.post(`https://localhost:44377/api/Account/Donor-register`, userData);
+
+  }
+
 
   setLogIn(userData: any): Observable<any> {
     return this._HttpClient.post(`https://localhost:44377/api/Account/log-in`, userData)

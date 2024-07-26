@@ -6,15 +6,29 @@
                 <h1 class="mb-4 custom-title dntly_header">Get Started</h1>
 
                 <form [formGroup]="registerForm" (ngSubmit)="handleForm()" class="custom-form">
-                    <div class="form-floating mb-2 mt-2 ">
-                        <input type="text" formControlName="userName" id="userName" class="form-control styled-input"
-                            placeholder=" " [(ngModel)]="userData.userName" #InputName>
+                    <div class="form-floating mb-2 mt-2">
+                        <input type="text" formControlName="userName" id="userName" class="form-control styled-input" placeholder=" ">
                         <label for="userName">User Name</label>
-                        <div class="text-danger "
-                            *ngIf="registerForm.get('userName')?.errors && (registerForm.get('userName')?.touched || InputName.value.length > 0)"[attr.dir]="isArabic ? 'rtl' : 'ltr'">
+                        <div class="text-danger" *ngIf="registerForm.get('userName')?.errors && (registerForm.get('userName')?.touched || registerForm.get('userName')?.dirty)" [attr.dir]="isArabic ? 'rtl' : 'ltr'">
                             <p *ngIf="registerForm.get('userName')?.getError('required')">Name is required</p>
                             <p *ngIf="registerForm.get('userName')?.getError('minlength')">Name Min length is 3</p>
                             <p *ngIf="registerForm.get('userName')?.getError('maxlength')">Name Max length is 20</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="form-floating mb-2 mt-2">
+                        <input type="text" formControlName="name"  id="name" class="form-control styled-input" placeholder=" " [(ngModel)]="userData.name">
+                        <label for="name">donor Name</label>
+                        <div class="text-danger" *ngIf="registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)">
+                            <p *ngIf="registerForm.get('name')?.getError('required')">Name is required</p>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-2 mt-4">
+                        <input type="file" formControlName="imgUrl" id="imgUrl" class="form-control styled-input" (change)="onFileChange($event)">
+                        <label for="imgUrl">Image Path</label>
+                        <div class="text-danger" *ngIf="registerForm.get('imgUrl')?.errors && (registerForm.get('imgUrl')?.touched || registerForm.get('imgUrl')?.dirty)">
+                            <p *ngIf="registerForm.get('imgUrl')?.getError('required')">Image Path is required</p>
                         </div>
                     </div>
                     <div class="form-floating  mb-2 mt-2">

@@ -16,12 +16,15 @@ declare var gapi: any;
     standalone: true,
     imports: [AuthNavbarComponent, ReactiveFormsModule, NgIf, RouterLink]
 })
+
 export class RegisterComponent {
+    selectedFile: File | null = null;
     userData: any = {
         userName: '',
         password: '',
         email: '',
-        accountType: 'donor'
+        name: '',
+        imgUrl: '',
     };
     isArabic=true;
     msgError: string | null = null;
@@ -34,7 +37,9 @@ export class RegisterComponent {
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[\d])(?=.*[!@#$%^&*()_+\-=\[\]{}|;':"\\,.<>\/?]).{6,20}$/)]),
         rePassword: new FormControl(''),
-        accountType: new FormControl('')
+        accountType: new FormControl(''),
+        name: new FormControl(''),
+        imgUrl: new FormControl(''),
     }, { validators: [this.confirmPassword, this.confirmEmail] } as FormControlOptions);
 
     confirmPassword(group: FormGroup): void {
@@ -62,18 +67,23 @@ export class RegisterComponent {
     handleForm(): void {
         if (this.registerForm.valid) {
             this.isLoading = true;
-            console.log(this.registerForm.value);
-            this._AuthService.setRegister(this.userData).subscribe({
+            const formData = new FormData();
+            formData.append('userName', this.registerForm.get('userName')?.value);
+            formData.append('email', this.registerForm.get('email')?.value);
+            formData.append('password', this.registerForm.get('password')?.value);
+            formData.append('name', this.registerForm.get('name')?.value);
+            formData.append('ProfileImg', this.selectedFile || '');
+
+            this._AuthService.setDonorRegister(formData).subscribe({
                 next: (response) => {
-                    console.log(response)
                     this.isLoading = false;
                     if (response.isPass == true) {
                         this.openSuccessDialog();
                         localStorage.setItem('donorName', this.registerForm.get('userName')?.value);
-                        this._Router.navigate(['/donoraccount']);
+                        this._Router.navigate(['/login']);
                     }
-                    else{
-                       this.msgError = response.message.toString();
+                    else {
+                        this.msgError = response.message.toString();
                     }
                 },
                 error: (err: HttpErrorResponse) => {
@@ -105,6 +115,15 @@ export class RegisterComponent {
         });
     }
 
+    onFileChange(event: any): void {
+        if (event.target.files.length > 0) {
+            this.selectedFile = event.target.files[0];
+            if (this.selectedFile) {
+                this.userData.imgUrl = this.selectedFile.name;
+            }
+        }
+    }
+
     handleGoogleSignIn(): void {
         const auth2 = gapi.auth2.getAuthInstance();
         auth2.signIn().then((googleUser: any) => {
@@ -123,7 +142,7 @@ export class RegisterComponent {
                     next: (response) => {
                         this.isLoading = false;
                         if (response.message == 'success') {
-                            this._Router.navigate(['/donoraccount']);
+                            this._Router.navigate(['/login']);
                         }
                     },
                     error: (err: HttpErrorResponse) => {
