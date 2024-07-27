@@ -44,4 +44,11 @@ return this._httpClient.post(`https://localhost:44377/api/charity`,charity);
     return id;
 
   }
-}
+
+
+  getCharityIdByProjectID(id:number):Observable<any>{
+  return this._httpClient.get<string>(`https://localhost:44377/api/charity/getCharityIdByProjectID/${id}`);
+
+  }
+  }
+

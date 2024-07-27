@@ -13,13 +13,11 @@ import { DonorComponent } from './Components/donor/donor.component';
 import { CharityComponent } from './Components/charity/charity.component';
 import { ProjectComponent } from './Components/project/project.component';
 import { CharitiesComponent } from './Components/charities/charities.component';
-
 import { HomeAuthComponent } from './Components/home-auth/home-auth.component';
 import { HomecharityComponent } from './Components/homecharity/homecharity.component';
 import { LogincharityComponent } from './Components/logincharity/logincharity.component';
 import { CharityDetailsComponent } from './Components/charity-details/charity-details.component';
 import { authGuard } from './Guards/auth.guard';
-
 import { MoneyDonationComponent } from './Components/money-donation/money-donation.component';
 import { InkindDonationComponent } from './Components/inkind-donation/inkind-donation/inkind-donation.component';
 import { ProfileComponent } from './Components/profile/profile.component';
@@ -38,18 +36,15 @@ export const routes: Routes = [
       { path: 'register', component: UserAccountTypeComponent },
       { path: 'donnerregister', component: RegisterComponent },
       { path: 'charityregister', component: CharityRegisterComponent },
-
       { path: 'donor', component: DonorComponent, canActivate: [authGuard] },
       { path: 'charity/:id', component: CharityComponent, canActivate: [authGuard] },
       { path: 'project', component: ProjectComponent, canActivate: [authGuard] },
       { path: 'charities', component: CharitiesComponent, canActivate: [authGuard] },
       { path: 'charity-details/:id', component: CharityDetailsComponent },
-   
       {path :'moneyDonation',component:MoneyDonationComponent},
       {path:'inkindDonation',component:InkindDonationComponent},
       {path:"donorprofile/:id",component:ProfileComponent},
-      {path:'report/:id',component:ReportComponent}
-      ,
+      {path:'report/:id',component:ReportComponent},
       {path:'allDonors',component:AlldonorsComponent}
     ]
   },

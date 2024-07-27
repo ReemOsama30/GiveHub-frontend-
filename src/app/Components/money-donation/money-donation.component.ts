@@ -19,8 +19,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ThanksDialogComponent } from '../thanks-dialog/thanks-dialog.component';
 import { PaypalButtonComponent } from '../paypal-button/paypal-button.component';
-
-
+import { CharityService } from '../../Services/charityService/charity.service';
 
 @Component({
   selector: 'app-money-donation',
@@ -51,6 +50,7 @@ export class MoneyDonationComponent implements OnInit {
     private authService: AuthService,
     private moneyDonationService: MoneyDonationService,
     private sharedService: SharedService,
+    private charityService: CharityService,
     private fb: FormBuilder,
     private _Router: Router,
     public dialog: MatDialog
@@ -74,8 +74,8 @@ export class MoneyDonationComponent implements OnInit {
       this.donorService.getDonorDetails(this.userId).subscribe({
         next: (res) => {
           console.log('message :', res.message);
-          this.donorEmail=res.message.email;
-          this.donorName=res.message.userName;
+          this.donorEmail = res.message.email;
+          this.donorName = res.message.userName;
           this.donationForm.get('email')?.setValue(res.message.email);
           this.donationForm.get('fullName')?.setValue(res.message.userName);
           this.projectName = this.sharedService.getProjectName();
@@ -94,17 +94,21 @@ export class MoneyDonationComponent implements OnInit {
     const amount = this.donationForm.controls['amount'].value;
     this.donationForm.controls['amount'].setValue(amount);
     this.projectId = this.sharedService.getProjectId() as number;
+    
     this.donationForm.controls['projectId'].setValue(this.projectId);
-    this.donorService.getDonorID(this.userId).subscribe({
+    this.donorId = this.userId;
+    this.donationForm.controls['donorId'].setValue(this.donorId);
+
+    this.charityService.getCharityIdByProjectID(this.projectId).subscribe({
       next: (res) => {
-        console.log('donor id :', res);
-        this.donorId = res;
-        this.donationForm.controls['donorId'].setValue(this.donorId);
+        const charityId = res.message; // Adjust this based on the response structure
+        console.log("this is the charity id", charityId);
+        this.donationForm.controls['charityId'].setValue(charityId);
       },
+      error: (err) => {
+        console.error('Error fetching charity ID:', err);
+      }
     });
-    const charityId = this.sharedService.getCharityId();
-    this.donationForm.controls['charityId'].setValue(charityId);
-    console.log(this.donationForm);
   }
 
   onAmountChange(event: any): void {
@@ -112,33 +116,26 @@ export class MoneyDonationComponent implements OnInit {
     localStorage.setItem('Amount', newAmount);
     //console.log('New Amount set to:', localStorage.getItem('Amount'));
   }
+
   onSubmit() {
     if (this.donationForm.valid) {
       const formData = new FormData();
       formData.append('donationDate', new Date().toISOString());
       formData.append('donorId', this.donationForm.controls['donorId'].value);
-      formData.append(
-        'projectId',
-        this.donationForm.controls['projectId'].value
-      );
-      formData.append(
-        'charityId',
-        this.donationForm.controls['charityId'].value
-      );
+      formData.append('projectId', this.donationForm.controls['projectId'].value);
+      formData.append('charityId', this.donationForm.controls['charityId'].value);
       formData.append('amount', this.donationForm.controls['amount'].value);
-      formData.append(
-        'paymentMethod',
-        this.donationForm.controls['paymentMethod'].value
-      );
+      formData.append('paymentMethod', this.donationForm.controls['paymentMethod'].value);
+
       formData.forEach((value, key) => {
         console.log(key, value);
       });
+
       this.moneyDonationService.postMoneyDonation(formData).subscribe({
         next: (response) => {
           console.log('Done', response.message);
           console.log('donation data is ', formData);
           this.openThanksDialog();
-         // alert('Donation Done successfully Thank You');
           this._Router.navigate(['donor']);
         },
         error: (err) => {
@@ -147,7 +144,6 @@ export class MoneyDonationComponent implements OnInit {
       });
     }
   }
-
 
   openThanksDialog(): void {
     this.dialog.open(ThanksDialogComponent, {
