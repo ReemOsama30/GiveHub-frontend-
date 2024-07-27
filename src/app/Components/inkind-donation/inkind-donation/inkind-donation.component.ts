@@ -78,16 +78,9 @@ export class InkindDonationComponent {
         }
       });
 
-      this.donorService.getDonorID(userId).subscribe({
-        next: (id: string) => {
-          this.donationForm.get('donorId')?.setValue(id);
-          console.log("donor id:", id);
-        },
-        error: (err: HttpErrorResponse) => {
-          console.error('Failed to get donor ID:', err);
-        }
-      });
-
+          this.donationForm.get('donorId')?.setValue(userId);
+          console.log("donor id:", userId);
+       
     }
 
     this.projectName = this.sharedService.getProjectName();
@@ -98,7 +91,7 @@ export class InkindDonationComponent {
       this.donationForm.get('projectId')?.setValue(projectId);
 
 
-      console.log("donor id:", projectId);
+     
     }
 
     const charityId = this.sharedService.getCharityId();
@@ -120,7 +113,7 @@ export class InkindDonationComponent {
         itemDescription: this.donationForm.get('itemDescription')?.value,
         quantity: this.donationForm.get('quantity')?.value
       };
-
+console.log(donationData)
 
 
       this.inkindDonationService.postInKindDonation(donationData).subscribe({
