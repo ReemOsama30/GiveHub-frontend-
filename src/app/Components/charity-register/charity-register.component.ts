@@ -82,7 +82,7 @@ export class CharityRegisterComponent {
       formData.append('description', this.userData.description);
       formData.append('websiteUrl', this.userData.websiteUrl);
       if (this.selectedFile) {
-      formData.append('imgUrl', this.selectedFile); 
+      formData.append('ProfileImg', this.selectedFile); 
       }
       console.log(formData)
       this._AuthService.setCharityRegister(formData).subscribe({

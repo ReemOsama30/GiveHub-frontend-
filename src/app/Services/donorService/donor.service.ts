@@ -23,7 +23,7 @@ createDonor(donor:any){
 
 getDonorID(id:string)
   {
-    return this._httpclient.get<number>(`https://localhost:44377/api/Donor/getDonorId/${id}`);
+    return this._httpclient.get<string>(`https://localhost:44377/api/Donor/getDonorId/${id}`);
   }
   
   getDonorDetails(userId:string):Observable<any>
@@ -32,7 +32,7 @@ getDonorID(id:string)
   }
 
 
-  getdonorByID(id:number):Observable<any>{
+  getdonorByID(id:string):Observable<any>{
     return this._httpclient.get(`https://localhost:44377/api/Donor/${id}`);
   }
 

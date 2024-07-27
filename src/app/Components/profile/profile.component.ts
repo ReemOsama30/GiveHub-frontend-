@@ -33,12 +33,12 @@ donorid:number=0;
     this.route.params.subscribe(params => {
       const id = +params['id'];
 
-      this.donorService.getdonorByID(id).subscribe(
+      this.donorService.getdonorByID(id.toString()).subscribe(
         (res: any) => {
           this.donor = res.message; 
          this.donorName=res.message.name;
          this.donorid=res.message.donorId;
-         console.log("donor id is",this.donor.id)
+         console.log("donor id is reem",this.donor.id)
          // console.log(res);
         },
         (error) => {

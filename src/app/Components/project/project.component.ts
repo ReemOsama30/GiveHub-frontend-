@@ -32,7 +32,7 @@ export class ProjectComponent {
     location:'',
     categoryId:''
   };
-  id:number=0
+  id:string=""
   categories: any[] = []; 
 
 
@@ -47,15 +47,13 @@ export class ProjectComponent {
   
   ngOnInit() {
     const userId = this.authservice.getUserId();
+    console.log("add project",userId);
     if (userId) {
-      this.charityService.getCharityID(userId).subscribe({
-        next: (id: number) => {
-          this.nweProj.charityId = id.toString();
-        },
-        error: (err: HttpErrorResponse) => {
-          console.error('Failed to get charity ID:', err);
-        }
-      });
+   
+          this.nweProj.charityId = userId.toString();
+          console.log("id added successfully ",this.nweProj)
+
+    }
 
       this.categoryService.getCategories().subscribe({
         next: (response: any) => {
@@ -67,7 +65,7 @@ export class ProjectComponent {
         }
       });
       
-    }
+    
   }
   
   projectStates = [];
@@ -128,7 +126,7 @@ export class ProjectComponent {
       formData.append('imgPath', this.selectedFile);
       formData.append('state', this.projectForm.get('state')?.value);
       formData.append('charityId', this.nweProj.charityId);
-
+    
       this._ProjectService.postProject(formData).subscribe({
         next: (response) => {
           console.log('project added Al hamd llah :', response);

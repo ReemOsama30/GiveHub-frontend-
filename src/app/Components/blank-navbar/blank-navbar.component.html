@@ -18,12 +18,12 @@
                 <div class="col-md dropdown-column">
                   <h6 class="dropdown-header-custom">Overview</h6>
                   <!-- Use accountNumber instead of number -->
-                  <a [routerLink]="['/project']" *ngIf="accountNumber === 1"
+                  <a [routerLink]="['/project']" *ngIf="accountNumber === 2"
                      class="dropdown-item dropdown-item-custom">Add New Project</a>
                   <a class="dropdown-item dropdown-item-custom" href="#">Custom Donation Forms</a>
-                  <a class="dropdown-item dropdown-item-custom" *ngIf="accountNumber === 2"
+                  <a class="dropdown-item dropdown-item-custom" *ngIf="accountNumber === 1"
                      [routerLink]="['/donor']">Donation Pages</a>
-                  <a class="dropdown-item dropdown-item-custom" *ngIf="accountNumber === 2"
+                  <a class="dropdown-item dropdown-item-custom" *ngIf="accountNumber === 1"
                      [routerLink]="['/charities']">Charities</a>
                 </div>
               </div>
@@ -31,15 +31,15 @@
           </div>
         </li>
         <!-- Use accountNumber instead of number -->
-        <a class="nav-link" *ngIf="accountNumber === 2" [routerLink]="['/donorprofile', accountId]"
+        <a class="nav-link" *ngIf="accountNumber === 1" [routerLink]="['/donorprofile', accountId]"
            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Your profile
         </a>
-        <a class="nav-link" *ngIf="accountNumber === 2" [routerLink]="['/allDonors']"
+        <a class="nav-link" *ngIf="accountNumber === 1" [routerLink]="['/allDonors']"
            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Donors Profile
         </a>
-        <a class="nav-link" *ngIf="accountNumber === 1" [routerLink]="['/report', accountId]"
+        <a class="nav-link" *ngIf="accountNumber === 2" [routerLink]="['/report', accountId]"
            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           View Your Report
         </a>

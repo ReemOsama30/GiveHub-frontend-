@@ -41,7 +41,7 @@ export class MoneyDonationComponent implements OnInit {
   projectName: string | null = '';
   paymentMethod: string = 'paypal';
   projectId: number = 0;
-  donorId: number = 0;
+  donorId: string = '';
   userId: string = '';
   donorName: string = ''; 
   donorEmail: string = ''; 

@@ -31,6 +31,7 @@ export class CharityComponent {
         
        this._projectService.getAllprojectForCharityId(this.charityId).subscribe({
         next:(res)=>{
+          console.log(res);
           this.projects = res.message
         },
         error:(err) => {
@@ -43,8 +44,11 @@ export class CharityComponent {
     
   }
   getFullImageUrl(relativePath: string): string {
-    return `https://localhost:44377${relativePath}`;
+    const fullPath = `https://localhost:44377${relativePath}`;
+    console.log(fullPath); // Log the full path for debugging
+    return fullPath;
   }
+
   
   // getProjects(page: number): void {
   //   this._projectService.getProjectsByPage(page).subscribe({

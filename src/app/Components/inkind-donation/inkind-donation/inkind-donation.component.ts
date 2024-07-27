@@ -79,7 +79,7 @@ export class InkindDonationComponent {
       });
 
       this.donorService.getDonorID(userId).subscribe({
-        next: (id: number) => {
+        next: (id: string) => {
           this.donationForm.get('donorId')?.setValue(id);
           console.log("donor id:", id);
         },

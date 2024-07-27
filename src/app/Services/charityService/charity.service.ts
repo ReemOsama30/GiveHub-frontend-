@@ -28,7 +28,7 @@ export class CharityService {
 
   getCharityID(id:string)
   {
-    return this._httpClient.get<number>(`https://localhost:44377/api/charity/getCharityID/${id}`);
+    return this._httpClient.get<string>(`https://localhost:44377/api/charity/getCharityID/${id}`);
 
 
   }

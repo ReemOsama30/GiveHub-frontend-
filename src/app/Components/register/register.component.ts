@@ -24,7 +24,7 @@ export class RegisterComponent {
         password: '',
         email: '',
         name: '',
-        imgUrl: '',
+        ProfileImg: '',
     };
     isArabic=true;
     msgError: string | null = null;
