@@ -1,98 +1,76 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DonorService } from '../../Services/donorService/donor.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DonationService } from '../../Services/donationService/donation.service';
-import { error } from 'console';
 import { CommonModule } from '@angular/common';
 import { BlankNavbarComponent } from '../blank-navbar/blank-navbar.component';
 import { AwardedBadgeService } from '../../Services/awardedBadgeService/awarded-badge.service';
+
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule,ProfileComponent,BlankNavbarComponent],
+  imports: [CommonModule, BlankNavbarComponent],
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'] 
+  styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
-  donor:any=null;
-  donorName:string=""
-badges:any=[];
-donorid:number=0;
-  moneyDonation:any=null;
-  inkindDonation:any=null;
-  constructor(private donorService:DonorService,private route:ActivatedRoute,private DonationService:DonationService,private awardBadgeService:AwardedBadgeService)
-  {
+  donor: any = null;
+  donorName: string = "";
+  badges: any[] = [];
+  donorId: string = "";
+  moneyDonation: any = null;
+  inkindDonation: any = null;
 
-  }
-
-
-
+  constructor(
+    private donorService: DonorService,
+    private route: ActivatedRoute,
+    private donationService: DonationService,
+    private awardBadgeService: AwardedBadgeService
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const id = +params['id'];
+      const id = params['id'];  // Treat the ID as a string
 
-      this.donorService.getdonorByID(id.toString()).subscribe(
+      this.donorService.getdonorByID(id).subscribe(
         (res: any) => {
-          this.donor = res.message; 
-         this.donorName=res.message.name;
-         this.donorid=res.message.donorId;
-         console.log("donor id is reem",this.donor.id)
-         // console.log(res);
+          this.donor = res.message;
+          this.donorName = res.message.name;
+          this.donorId = res.message.donorId;
+          console.log("donor id is reem", res);
         },
         (error) => {
           console.error('Error fetching donor:', error);
-      
         }
       );
 
+      this.donationService.getmoneyDonationByDonorID(id).subscribe(
+        (res: any) => {
+          this.moneyDonation = res.message;
+          console.log(this.moneyDonation);
+        },
+        (error) => {
+          console.error('Error fetching money donations:', error);
+        }
+      );
 
- 
+      this.donationService.getInkindDonationByDonorID(id).subscribe(
+        (res: any) => {
+          this.inkindDonation = res.message;
+        },
+        (error) => {
+          console.error('Error fetching in-kind donations:', error);
+        }
+      );
 
-      
-    this.DonationService.getmoneyDonationByDonorID(id).subscribe(
-
-(res:any)=>{
-  this.moneyDonation=res.message;
-  console.log(this.moneyDonation);
-},
-(error)=>{
-  console.error('Error fetching donor:', error);
-         
-}
-
-
-    );
-
-
-
-    this.DonationService.getInkindDonationByDonorID(id).subscribe(
-
-      (res:any)=>{
-        this.inkindDonation=res.message;
-      },
-      (error)=>{
-        console.error('Error fetching donor:', error);
-               
-      }
-      
-      
-          );
-          
-    this.awardBadgeService.getBadgesByUserID(id).subscribe(
-
-      (res:any)=>{
-        this.badges=res.message
-        console.log("the badges are",this.badges);
-      }
-    )
-  
-
+      this.awardBadgeService.getBadgesByUserID(id).subscribe(
+        (res: any) => {
+          this.badges = res.message;
+          console.log("the badges are", this.badges);
+        }
+      );
     });
-
-
-
   }
 
   getFullImageUrl(relativePath: string): string {

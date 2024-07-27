@@ -43,7 +43,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let donation of moneyDonation">
-                                <td><img [src]="getFullImageUrl(donation.projectImage)" alt="Project Image"></td>
+                                <td><img [src]="getFullImageUrl(donation.projectImage)" alt="Project Image" class="table-img"></td>
                                 <td>{{ donation.projectName }}</td>
                                 <td>{{ donation.donationDate | date:'longDate' }}</td>
                                 <td>{{ donation.charityName }}</td>
@@ -68,7 +68,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let donation of inkindDonation">
-                                <td><img [src]="getFullImageUrl(donation.projectImage)" alt="Project Image"></td>
+                                <td><img [src]="getFullImageUrl(donation.projectImage)" alt="Project Image"class="table-img"></td>
                                 <td>{{ donation.projectName }}</td>
                                 <td>{{ donation.donationDate | date:'longDate' }}</td>
                                 <td>{{ donation.charityName }}</td>
