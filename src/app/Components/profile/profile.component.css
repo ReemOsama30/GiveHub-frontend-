@@ -1,6 +1,4 @@
-
-
- body {
+body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
@@ -41,7 +39,7 @@ header {
 
 .profile-info h2 {
   margin: 0;
-  color: #2980f2;
+  color: #77d986;
   font-size: 2.5em;
   font-weight: 600;
   text-transform: uppercase;
@@ -53,17 +51,7 @@ header {
   font-weight: 500;
 }
 
-.social-icons i {
-  font-size: 28px;
-  color: #2980f2;
-  margin: 0 15px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
 
-.social-icons i:hover {
-  color: #0056b3;
-}
 
 main {
   margin-top: 30px;
@@ -71,20 +59,15 @@ main {
 
 .donation-history {
   margin-top: 30px;
+  margin-bottom: 2rem;
 }
 
-.donation-history h3{
+.donation-history h3 {
   text-align: center;
   color: #f2e085;
   margin-bottom: 30px;
   font-size: 1.5em;
   font-weight: 600;
-}
-
-h2{
-  margin-bottom: 30px;
-  font-size: 1.8em;
-  font-weight: 800;
 }
 
 .donation-history table {
@@ -96,8 +79,9 @@ h2{
   overflow: hidden;
 }
 
-.donation-history th, .donation-history td {
-  padding: 10px; /* Reduced padding */
+.donation-history th,
+.donation-history td {
+  padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
@@ -105,7 +89,7 @@ h2{
 .donation-history th {
   background: #77d986;
   color: #fff;
-  font-size: 1.1em; /* Slightly reduced font size */
+  font-size: 1.1em;
   font-weight: 700;
 }
 
@@ -118,14 +102,16 @@ h2{
 }
 
 .donation-history td img {
-  width: 70px; /* Reduced image size */
+  width: 70px;
   border-radius: 8px;
 }
+
 .table-img {
-  width: 150px;  
-  height: 100px; 
-  object-fit: cover; 
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
 }
+
 .badges {
   text-align: center;
   margin-top: 50px;
@@ -155,4 +141,18 @@ h2{
   color: #007bff;
   font-weight: bold;
   font-size: 1.1em;
+}
+
+@media (max-width: 767px) {
+  .profile-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .profile-info p {
+    font-size: 1rem;
+  }
+
+  .social-icons i {
+    font-size: 1.5rem;
+  }
 }

@@ -1,27 +1,15 @@
 <app-blank-navbar class="m-5"></app-blank-navbar>
 <br><br><br><br>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
-</head>
+
 <body>
     <div class="container">
-        <header>
-            <div class="profile-picture">
-                <img [src]="getFullImageUrl(donor.profileImg)" alt="Profile Picture">
+        <header class="text-center my-4">
+            <div class="profile-picture mx-auto">
+                <img [src]="getFullImageUrl(donor.profileImg)" alt="Profile Picture" class="img-fluid">
             </div>
-            <div class="profile-info">
+            <div class="profile-info mt-3">
                 <h2>{{ donor.name }}</h2>
                 <p>Date Joined: {{ donor.dateJoined }}</p>
-                <div class="social-icons">
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-solid fa-x"></i>
-                    <i class="fa-brands fa-linkedin"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                </div>
             </div>
         </header>
         <main>
@@ -30,62 +18,68 @@
                 
                 <div class="donation-history">
                     <h3 class="text-center" style="color: #f2e085;">Monetary Donations</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Project Image</th>
-                                <th>Project Name</th>
-                                <th>Date</th>
-                                <th>Charity</th>
-                                <th>Amount</th>
-                                <th>Payment Method</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let donation of moneyDonation">
-                                <td><img [src]="getFullImageUrl(donation.projectImage)" alt="Project Image" class="table-img"></td>
-                                <td>{{ donation.projectName }}</td>
-                                <td>{{ donation.donationDate | date:'longDate' }}</td>
-                                <td>{{ donation.charityName }}</td>
-                                <td>${{ donation.amount }}</td>
-                                <td>{{ donation.paymentMethod }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Project Image</th>
+                                    <th>Project Name</th>
+                                    <th>Date</th>
+                                    <th>Charity</th>
+                                    <th>Amount</th>
+                                    <th>Payment Method</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let donation of moneyDonation">
+                                    <td><img [src]="getFullImageUrl(donation.projectImage)" alt="Project Image" class="table-img"></td>
+                                    <td>{{ donation.projectName }}</td>
+                                    <td>{{ donation.donationDate | date:'longDate' }}</td>
+                                    <td>{{ donation.charityName }}</td>
+                                    <td>${{ donation.amount }}</td>
+                                    <td>{{ donation.paymentMethod }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 
                 <div class="donation-history">
                     <h3 class="text-center" style="color: #f2e085;">In-Kind Donations</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Project Image</th>
-                                <th>Project Name</th>
-                                <th>Donation Date</th>
-                                <th>Charity</th>
-                                <th>Quantity</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let donation of inkindDonation">
-                                <td><img [src]="getFullImageUrl(donation.projectImage)" alt="Project Image"class="table-img"></td>
-                                <td>{{ donation.projectName }}</td>
-                                <td>{{ donation.donationDate | date:'longDate' }}</td>
-                                <td>{{ donation.charityName }}</td>
-                                <td>{{ donation.quantity }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Project Image</th>
+                                    <th>Project Name</th>
+                                    <th>Donation Date</th>
+                                    <th>Charity</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let donation of inkindDonation">
+                                    <td><img [src]="getFullImageUrl(donation.projectImage)" alt="Project Image" class="table-img"></td>
+                                    <td>{{ donation.projectName }}</td>
+                                    <td>{{ donation.donationDate | date:'longDate' }}</td>
+                                    <td>{{ donation.charityName }}</td>
+                                    <td>{{ donation.quantity }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
             <section class="badges">
-                <h2 class="badgetitle text-primary">My Badges</h2>
-                <div *ngFor="let badge of badges" class="badge">
-                    <img [src]="getFullImageUrl(badge.icon)" alt="Badge">
-                    <p>{{ badge.name }}</p>
+                <h2 class="text-center text-primary">My Badges</h2>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <div *ngFor="let badge of badges" class="badge m-2">
+                        <img [src]="getFullImageUrl(badge.icon)" alt="Badge" class="table-img">
+                        <p>{{ badge.name }}</p>
+                    </div>
                 </div>
             </section>
         </main>
     </div>
+ 
 </body>
-</html>
