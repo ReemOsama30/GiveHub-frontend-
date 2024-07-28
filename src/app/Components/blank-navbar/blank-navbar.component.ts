@@ -16,9 +16,9 @@ import AccountType from '../../Enums/AccountType';
   imports: [RouterLinkActive, RouterModule, CommonModule, RouterLink, HomeComponent]
 })
 export class BlankNavbarComponent implements OnInit {
-  accountType: AccountType = AccountType.Donor;
-  accountId: string = "";
-  accountNumber: number = 0;
+  accountType: string = "";
+  accountId: string |null= "";
+
 
   constructor(
     private authService: AuthService,
@@ -32,45 +32,12 @@ export class BlankNavbarComponent implements OnInit {
     this.accountType = this.authService.getUserAccountType();
     console.log('Retrieved accountType:', this.accountType);
 
-    this.accountNumber = this.convertAccountTypeToNumber(this.accountType);
+    this.accountId  = this.authService.getUserId();
 
-    const userId = this.authService.getUserId();
-    if (this.accountId) {
-      if (this.accountType === AccountType.Donor) {
-        this.donorService.getDonorID(this.accountId).subscribe({
-          next: (response) => {
-            this.accountId = response;
-            console.log('Donor ID:', this.accountId);
-          },
-          error: (err) => {
-            console.error('Error fetching donor ID:', err);
-          }
-        });
-      } else if (this.accountType === AccountType.Charity) {
-        this.charityService.getCharityID(this.accountId).subscribe({
-          next: (response) => {
-            this.accountId = response;
-            console.log('Charity ID:', this.accountId);
-          },
-          error: (err) => {
-            console.error('Error fetching charity ID:', err);
-          }
-        });
-      }
-    }
+ 
   }
 
-  convertAccountTypeToNumber(accountType: AccountType): number {
-    switch(accountType) {
-      case AccountType.Charity:
-        return 1;
-      case AccountType.Donor:
-        return 2;
-      default:
-        console.error('Unexpected accountType:', accountType);
-        return -1;
-    }
-  }
+ 
 
   logOutUser(): void {
     this.authService.logOut();

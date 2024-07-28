@@ -58,16 +58,16 @@ export class AuthService {
     }
   }
 
-  getUserAccountType(): AccountType {
+  getUserAccountType(): string {
     const token = localStorage.getItem('eToken');
     if (token) {
       const decodedToken: any = jwtDecode(token);
       const accountTypeStr = decodedToken['AccountType'];
       console.log('Decoded token AccountType:', accountTypeStr);
       
-      return this.convertStringToAccountType(accountTypeStr);
+      return  accountTypeStr;
     }
-    return AccountType.Donor;
+    return "Donor";
   }
 
   private convertStringToAccountType(accountTypeStr: string): AccountType {
