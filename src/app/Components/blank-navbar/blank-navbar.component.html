@@ -1,9 +1,12 @@
 <nav class="navbar navbar-expand-lg fixed-top p-3">
-  <div class="container d-flex m-auto">
+  <div class="container">
     <a class="navbar-brand" href="#">
       <img src="./assets/Images/GiveHub-LogoNav.png" alt="Logo" height="40">
     </a>
-    <div class="collapse navbar-collapse col-8" id="navbarSupportedContent">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="home">Home</a>
@@ -12,45 +15,33 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Features
           </a>
-          <div class="dropdown-menu dropdown-menu-custom shadow-lg" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu shadow-lg" aria-labelledby="navbarDropdown">
             <div class="container">
               <div class="row">
-                <div class="col-md dropdown-column">
-                  <h6 class="dropdown-header-custom">Overview</h6>
-                  <!-- Use accountNumber instead of number -->
-                  <a [routerLink]="['/project']" *ngIf="accountType === 'Chatiry'"
-                     class="dropdown-item dropdown-item-custom">Add New Project</a>
-                  <a class="dropdown-item dropdown-item-custom" href="#">Custom Donation Forms</a>
-                  <a class="dropdown-item dropdown-item-custom" *ngIf="accountType === 'Donor'"
-                     [routerLink]="['/donor']">Donation Pages</a>
-                  <a class="dropdown-item dropdown-item-custom" *ngIf="accountType === 'Donor'"
-                     [routerLink]="['/charities']">Charities</a>
+                <div class="col-md-12">
+                  <h6 class="dropdown-header">Overview</h6>
+                  <a [routerLink]="['/project']" *ngIf="accountType === 'Charity'" class="dropdown-item">Add New Project</a>
+                  <a class="dropdown-item" href="#">Custom Donation Forms</a>
+                  <a class="dropdown-item" *ngIf="accountType === 'Donor'" [routerLink]="['/donor']">Donation Pages</a>
+                  <a class="dropdown-item" *ngIf="accountType === 'Donor'" [routerLink]="['/charities']">Charities</a>
                 </div>
               </div>
             </div>
           </div>
         </li>
-        <!-- Use accountNumber instead of number -->
-        <a class="nav-link" *ngIf="accountType === 'Donor'" [routerLink]="['/donorprofile', accountId]"
-           id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Your profile
-        </a>
-        <a class="nav-link" [routerLink]="['/allDonors']"
-           id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Donors Profile
-        </a>
-        <a class="nav-link" *ngIf="accountType === 'Chatiry'" [routerLink]="['/report', accountId]"
-           id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          View Your Report
-        </a>
-      </ul>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="accountType === 'Donor'" [routerLink]="['/donorprofile', accountId]">Your profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/allDonors']">Donors Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="accountType === 'Charity'" [routerLink]="['/report', accountId]">View Your Report</a>
+        </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <h6>
-            <a class="nav-link cursor btn button is-small w-button custom-button btn-primary" routerLinkActive="active-link" (click)="logOutUser()">Logout</a>
-          </h6>
+          <button class=" btn btn-primary" (click)="logOutUser()">Logout</button>
         </li>
       </ul>
     </div>
